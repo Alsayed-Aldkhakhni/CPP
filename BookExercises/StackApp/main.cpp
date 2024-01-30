@@ -65,7 +65,7 @@ void print(Stack & st)
 {
 	for(int ite = 0; ite <= 9; ite++)
 	{
-		cout << ite << "    |" << setw(12) << st.list[ite] << setw(8) << "|\n"
+		cout << ite << "    |" << setw(6) << st.list[ite] << setw(6) << "|\n"
 					 << "     ----------\n";
 	}
 }
