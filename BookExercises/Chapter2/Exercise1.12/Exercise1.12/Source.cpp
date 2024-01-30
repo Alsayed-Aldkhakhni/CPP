@@ -24,7 +24,7 @@ int main()
 													//		and the rest fraction is to pence.
 	float fracPence = (fracShilling - shilling) * 12;
 
-	int pence = static_cast<int>(fracPence);		// the final pence and the reset of the fraction is not neccessary.
+	int pence = static_cast<int>(fracPence);		// the final pence and the reset of the fraction is not necessary.
 
 													// For the final step, I will print the old notation in the converted form.
 	cout  << "\n\x9c" << pounds << '.' << shilling << '.' << pence << ".\n";
