@@ -1,0 +1,4 @@
+﻿  Exercise10.cpp
+X:\C++Codes\BookExercises\Chapter3\Exercise10\Exercise10\Exercise10.cpp(41,15): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+X:\C++Codes\BookExercises\Chapter3\Exercise10\Exercise10\Exercise10.cpp(46,44): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Exercise10.vcxproj -> X:\C++Codes\BookExercises\Chapter3\Exercise10\x64\Debug\Exercise10.exe
