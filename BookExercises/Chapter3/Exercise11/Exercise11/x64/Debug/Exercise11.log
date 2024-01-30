@@ -1,0 +1,5 @@
+﻿  Exercise11.cpp
+X:\C++Codes\BookExercises\Chapter3\Exercise11\Exercise11\Exercise11.cpp(111,26): warning C4244: '=': conversion from 'float' to 'unsigned int', possible loss of data
+X:\C++Codes\BookExercises\Chapter3\Exercise11\Exercise11\Exercise11.cpp(112,32): warning C4244: '=': conversion from 'float' to 'unsigned int', possible loss of data
+X:\C++Codes\BookExercises\Chapter3\Exercise11\Exercise11\Exercise11.cpp(113,25): warning C4244: '=': conversion from 'float' to 'unsigned int', possible loss of data
+  Exercise11.vcxproj -> X:\C++Codes\BookExercises\Chapter3\Exercise11\x64\Debug\Exercise11.exe
