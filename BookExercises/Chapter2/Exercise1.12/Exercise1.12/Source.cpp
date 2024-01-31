@@ -1,33 +1,46 @@
 /*
- * Subject: convert decimal pounds to the old British monetary notation.
- *
- * Date: October 12, 2023
- *
- * Written by: Alsayed Aldkhakhni.
-*/
+ * Subject: A phone structure to handle the phone data.
+ 
+ * Date: December 11, 2023
+ 
+ * Author: Alsayed Aldkhakhni
+ */
 
-#include<iostream>									// 'iostream' is a header file that contains the declaration of 'cin' and 'cout'.
-using namespace std;								// namespace 'standard' is essential for 'cin' and 'cout' which contains their definition.
+
+// Preprocessor directive instruct the compiler's preprocessor 
+// to fetch the whole content of that header file inside this source file.
+#include <iostream>                     // cin, cout declaration.
+using namespace std;                    // contains the defination of 'cin', 'cout' objects.
+
+struct Phone                            // Structure defination.
+{                                       
+    int areaCode;                       // members.
+    int exchangeCode;
+    int phoneNumber;
+};
 
 int main()
-{					
-	float decimalAmount = 0.0;						// To hold the amount entered by the user
+{
 
-	cout << "Enter decimal pounds: ";				// asking the user to enter decimal amount in the new British monetary system.
-	cin >> decimalAmount;							// Get that amount.
+    Phone mine{}, his{};                // These, {}, just to initialize the members with nothing.
+    mine.areaCode = 212; mine.exchangeCode = 767; mine.phoneNumber = 8900;
 
-	int  pounds = static_cast<int>(decimalAmount);  // pounds.
-													// reset fraction converted to shillings.
-	float fracShilling = (decimalAmount - pounds) * 20; 
+                                        // prompt message tells the user what to do.
+    cout << "Enter area code, exchange, number: ";
+                                        // get his phone number.
+    cin >> his.areaCode >> his.exchangeCode >> his.phoneNumber;
 
-	int shilling = static_cast<int>(fracShilling);  // the integer shillings 
-													//		and the rest fraction is to pence.
-	float fracPence = (fracShilling - shilling) * 12;
+    cout << "\fMine: "                  // print two numbers, mine and his
+         << '(' << mine.areaCode << ") "
+         << mine.exchangeCode << '-'
+         << mine.phoneNumber;
 
-	int pence = static_cast<int>(fracPence);		// the final pence and the reset of the fraction is not necessary.
 
-													// For the final step, I will print the old notation in the converted form.
-	cout  << "\n\x9c" << pounds << '.' << shilling << '.' << pence << ".\n";
+    cout << "\fYours: "
+         << '(' << his.areaCode << ") "
+         << his.exchangeCode << '-'
+         << his.phoneNumber;
 
-	return 0;										// indicates the 'OS' that the program executed successfully.
+    cout << '\f';                       // for output's clarity.
+    return 0;                           //  flag the 'OS' that the program executed successfully.
 }
