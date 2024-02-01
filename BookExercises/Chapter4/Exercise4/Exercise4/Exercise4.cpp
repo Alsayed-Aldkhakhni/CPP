@@ -11,7 +11,7 @@
 // fetch the whole content of that header file, 'iostream', into this source file.
 #include <iostream>             // contains the declaration of 'cin', 'cout'.
 
-struct Employee                 // strucute's defiantion, tag.
+struct Employee                 // structure's definition, tag.
 {
     unsigned employeeNumber;    // since the number of employee is positive.
     float employeeCompensation; // Compensation may be has fractional part.
@@ -31,13 +31,13 @@ int main()
     std::cout << "Enter employee number: "; 
     std::cin >> num;
 
-                                // check the input's validaiton.
+                                // check the input's validation.
     emp_one.employeeNumber = num > 0 ? num : 0;
 
     std::cout << "Enter employee compensation: ";
     std::cin >> comp;
 
-                                // check the input's validaiton.
+                                // check the input's validation.
     emp_one.employeeCompensation = comp > 0 ? comp : 0;
 
     //***************************************************
@@ -45,13 +45,13 @@ int main()
     std::cout << "\n\nEnter employee number: "; 
     std::cin >> num;
 
-                                // check the input's validaiton.
+                                // check the input's validation.
     emp_two.employeeNumber = num > 0 ? num : 0;
 
     std::cout << "Enter employee compensation: ";
     std::cin >> comp;
 
-                                // check the input's validaiton.
+                                // check the input's validation.
     emp_two.employeeCompensation = comp > 0 ? comp : 0;
 
     //***************************************************
@@ -66,12 +66,14 @@ int main()
 
     emp_three.employeeCompensation = comp > 0 ? comp : 0;
 
+    std::cout << "+++++++++++++++++++++++++++++++++++++++++++++++++++++++";
+
                                 // print the data of entered employees.
     std::cout << "\fEmployee number: " << emp_one.employeeNumber << '\f'
               << "Employee compensation: $" << emp_one.employeeCompensation << "\f\f";
 
     std::cout << "\fEmployee number: " << emp_two.employeeNumber << '\f'
-             << "Employee compensation: $" << emp.employeeCompensation << "\f\f";
+             << "Employee compensation: $" << emp_two.employeeCompensation << "\f\f";
 
     std::cout << "\fEmployee number: " << emp_three.employeeNumber << '\f'
               << "Employee compensation: $" << emp_three.employeeCompensation << "\f\f";
