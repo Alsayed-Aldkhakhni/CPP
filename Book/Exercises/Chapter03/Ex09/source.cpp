@@ -13,6 +13,7 @@ using namespace std;// for cout, cin definition.
 
 int main()
 {
+	// declare variables.
 	int guests, seats;
 	
 	// read the guests number.
