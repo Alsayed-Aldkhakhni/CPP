@@ -95,7 +95,7 @@ public:
 			if(temp == TOP)
 				cout << "   <---- TOP.";
 
-			temp = temp->next();
+			temp = temp->next;
 		}
 
 		cout << "\n---------\n\n";
