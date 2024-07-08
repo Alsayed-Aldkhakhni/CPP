@@ -1,5 +1,5 @@
 /*
- * Subject: A function that converts a time to seconds.
+ * Subject: A function that compares two distance structures.
  * 
  * Time: January 1, 2024
  * 
@@ -11,53 +11,45 @@
 
 #include <iostream> // for objects cin, cout declaration.
 using namespace std;// for their definition.
-/////////////////////////////////////////////
-struct Time         // struct tag.
+////////////////////////////////////
+struct Distance     // struct tag.
 {
-	int hours;
-	int minutes;
-	int seconds;	
+	int feet;
+	float inches;
 };
-//////////////////////////////////////////////
+////////////////////////////////////
 
-// function's prototype.
-unsigned long toSeconds(Time);
+// functions' prototype.
+Distance& distCmp(Distance&, Distance&);
+void showDist(Distance&);
 
 int main()
 {
-	// declare an object.
-	Time time1;
+	// instantiate 3 objects.
+	Distance dist1{7, 1.5}, dist2{8, 1.5}, big;
 	
-	// to read the colon.
-	char dummyChar;
+	// call the function.
+	big = distCmp(dist1, dist2);
 	
-	// read the time from the user.
-	cout << "Enter the current time[12:59:59]: ";
-	cin >> time1.hours >> dummyChar >> time1.minutes >> dummyChar >> time1.seconds;
+	// call the other one to display.
+	showDist(dist1);
+	showDist(dist2);
+	showDist(big);
 	
-	// valiTime the values.
-	if(time1.hours <= 0 || time1.hours > 12 ||
-	   time1.minutes < 0 || time1.minutes > 59 ||
-	   time1.seconds < 0 || time1.seconds > 59)
-	{
-		cout << "Invalid value entered t1.\n";
-		exit(1);
-	}
-	
-
-	// print the Time.
-	cout << "Your entered:        " << time1.hours << ':' << time1.minutes << ':' << time1.seconds << "\n";
-	cout << "Which is in seconds: " << toSeconds(time1) << "\n\n";
-	
-	
-	// indicates a successful execution
+	// indicates a successful execution.
 	return 0;
 }
 
-// function's definition.
-unsigned long toSeconds(Time time1)
+// functions' definition.
+void showDist(Distance& dist)
 {
-	return time1.hours * 3600 + time1.minutes * 60 + time1.seconds;
+	cout << "distance: " << dist.feet << "'-" << dist.inches << "\"\n";
 }
 
-
+Distance& distCmp(Distance& dist1, Distance& dist2)
+{
+	if(dist1.feet > dist2.feet && dist1.inches > dist2.inches)
+		return dist1;
+	else
+		return dist2;
+}
