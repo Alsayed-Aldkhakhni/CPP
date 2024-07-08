@@ -1,3 +1,5 @@
-# CPP
-## This repo contains some codes in C++ in both paradiagms.
-## The used book is "Fish book." by robert lafore.
+# Repo's content...
+## 1. Robert lafore book, Fish book 4th-ed, exercises solutions.
+## 2. 
+## 3. 
+
