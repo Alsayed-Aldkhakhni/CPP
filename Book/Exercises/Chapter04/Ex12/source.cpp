@@ -1,5 +1,5 @@
 /*
- * Subject: Four-function calculator for fractions usgin struct.
+ * Subject: Four-function calculator for fractions using struct.
  * 
  * Date: December 5, 2024
  * 
@@ -67,7 +67,7 @@ int main()
 	
 	case '/':
 		div.numerator   =  (frac1.numerator   * frac2.denominator);
-		div.denominator =  (frac2.denominator * frac1.numerator);
+		div.denominator =  (frac1.denominator * frac2.numerator);
 		cout << div.numerator << '/' << div.denominator << "\n";
 		break;
 	
