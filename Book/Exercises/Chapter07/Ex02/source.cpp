@@ -53,7 +53,7 @@ public:
 int main()
 {
 	// define the array of employees.
-	short LIM = 5;
+	const short LIM = 5;
 	Employee emp[LIM];
 	
 	
@@ -74,5 +74,6 @@ int main()
 	// indicates a succesful execution.
 	return 0;
 }
+
 
 
