@@ -147,10 +147,10 @@ int main()
 		queue1.display(); // 12 13 14 15
 
 		//rear  front
-		//	|     |
-		//	V     V
+		// |     |
+		// V     V
 		// 16    12 13 14 15   <----- data.
-		//  0    1  2  3  4    <---- indexes.
+		// 0     1  2  3  4    <---- indexes.
 		queue1.enQueue(16);
 		queue1.enQueue(17); // overflow.
 
