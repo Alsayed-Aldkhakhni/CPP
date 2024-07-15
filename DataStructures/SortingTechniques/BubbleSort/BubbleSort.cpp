@@ -9,7 +9,6 @@
 
 #include <iostream> // for cin, cout objects declaration.
 using namespace std;// for their definition.
-const short LIM = 10;
 
 // functions' prototype.
 template<class Type>
@@ -23,20 +22,24 @@ void Swap(Type&, Type&);
 
 int main()
 {
-	int intArr[LIM] = {13, -10, 12, -10, 15, 11, 55, -21, 7, 8};
-	char charArr[LIM] = {'x', 'A', 'C', 'm', 'R', 'n', 'j', 'W', 'u', 'P'};
+	int intArr[] = {13, -10, 12, -10, 15, 11, 55, -21, 7, 8};
+	char charArr[] = {'x', 'A', 'C', 'm', 'R', 'n', 'j', 'W', 'u', 'P'};
+
+	// dynamic calculation to the size of the arrays.
+	int intSize = sizeof(intArr) / sizeof(intArr[1]);
+	int charSize = sizeof(charArr)/ sizeof(charArr[1]);
 
 	// array of integers.
-	cout << "Before: "; display(intArr, LIM);
-	bubbleSort(intArr, LIM);
-	cout << "\nAfter: "; display(intArr, LIM);
+	cout << "Before:  "; display(intArr, intSize);
+	bubbleSort(intArr, intSize);
+	cout << "\nAfter: "; display(intArr, intSize);
 
 	cout << "\n\n******************************\n\n";
 
 	// array of characters.
-	cout << "Before: "; display(charArr, LIM);
-	bubbleSort(charArr, LIM);
-	cout << "\nAfter: "; display(charArr, LIM);
+	cout << "Before: "; display(charArr, charSize);
+	bubbleSort(charArr, charSize);
+	cout << "\nAfter: "; display(charArr, charSize);
 
 	// indicates a successful execution.
 	return 0;
@@ -68,10 +71,10 @@ void Swap(Type& x, Type& y)
 }
 
 template<class Type>
-void display(Type* arr, int)
+void display(Type* arr, int size)
 {
 	cout << "\n========================================================================\n|";
-	for(int j = 0; j < LIM; j++)
+	for(int j = 0; j < size; j++)
 		cout << "  " << arr[j] << "  |";
 	cout << "\n========================================================================\n";
 
