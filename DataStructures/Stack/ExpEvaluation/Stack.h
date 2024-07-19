@@ -1,5 +1,5 @@
 //============================================================================
-// Name        : ExpEvaluation.cpp
+// Name        : Stack.h 
 // Date        : June 17, 2024
 // Author      : Alsayed-Aldkhakhni
 // Version     : V1.0
@@ -7,7 +7,7 @@
 // Description : Stack data structure implementation.
 //============================================================================
 
-#include <iostream> // for objects 'cin' and 'cout'declaration.
+#include <iostream> // for objects 'cin' and 'cout' declaration.
 using namespace std;// for their definition.
 //#########################################################################################//
 template <class T>
