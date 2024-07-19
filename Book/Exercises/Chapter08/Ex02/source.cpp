@@ -65,6 +65,9 @@ public:
 		
 		return String(str);
 	}
+
+	// release the memory dedicated.
+	~String() { delete[] str; }
 };
 //##########################################################################//
 
