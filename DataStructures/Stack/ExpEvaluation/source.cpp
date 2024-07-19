@@ -1,9 +1,9 @@
 //============================================================================
-// Name        : ExpEvaluation.cpp
+// Name        : source.cpp
 // Date        : June 17, 2024
 // Author      : Alsayed-Aldkhakhni
 // Copyright   : Nothing to be mentioned.
-// Description : Evaluate a post-fix expression.
+// Description : Evaluate an infix expression.
 //============================================================================
 
 // preprocessor directive, instructs the preprocessor to pre-fetch the
@@ -15,31 +15,39 @@
 #include "Stack.h"  // reference of Stack data structure.
 using namespace std;// contains the definition of cin, cout.
 
-// function's prototype to evaluate an post-fix expression.
-int postfixEval(char exp[], const int len);
+// functions' prototype.
+int evaluate(char exp[], const int len);
+void InToPost(char* in,  char* post);
 
 int main()
 {
 	// array of characters, i used it since string didn't work.
-	char exp[100];
-
-	// prompt the user to enter an expression.
-	cout << "Enter a post-fix expression [e.g. 6 9 * 14 +]\n"
-			"$leave space among the operators and operands.$\n"
-			"$no negative numbers$: ";
+	char infix[100], postfix[100];
+	
+	// prompt the user to enter an infixression.
+	cout << "\n    Enter an infix expression[e.g. 6 * 14 + 5]\n"
+			"    $leave space among the operators and operands.$\n"
+			"    $no negative numbers$: ";
 
 	// read it.
-	cin.getline(exp, 100);
+	cin.getline(infix, 100);
 
+	InToPost(infix, postfix);
+	
+	cout << "================================\n";
+	cout << "    Infix:      " << infix << "\n"
+		 << "    Postfix:    " << postfix << "\n";
+	
 	// execute.
-	cout << exp << " = " << postfixEval(exp, strlen(exp)) << "\n";
+	cout << "    Expression: " << infix << " = " << evaluate(postfix, strlen(postfix));
+	cout << "\n================================\n";
 
 	// indicate a successful execution.
 	return 0;
 }
 
 // function's body.
-int postfixEval(char exp[], const int len)
+int evaluate(char exp[], const int len)
 {
 	// hold the data.
 	Stack<int> st(50);
@@ -50,27 +58,26 @@ int postfixEval(char exp[], const int len)
 	int solve(int, int, char);// carry out the operation.
 
 	// hold the digits to convert to numerical.
-	char buff[7]; int k = 0;
+	char buff[10]; int k = 0;
 	long rslt;
-
+	
 	// Processing the characters in the stack.
 	for(int i = 0; i < len; i++)
 	{
-		if(exp[i] == ' ' && !isOperator(exp[i-1]))
+		if(isDigit(exp[i]))
+			buff[k++] = exp[i];
+		else if(exp[i] == ' ' && !isOperator(exp[i-1])  && exp[i-1] != ' ')
 		{
 			buff[k] = '\0';
 
 			// evaluate string to numeric.
 			rslt = atol(buff);
 			st.push(rslt);
-
+			
 			// reset the buffer array.
 			k = 0;
 			buff[0] = '\0';
 		}
-		else if(isDigit(exp[i]))
-			buff[k++] = exp[i];
-
 		// carry out the operation.
 		else if(isOperator(exp[i]))
 		{
@@ -90,7 +97,7 @@ int postfixEval(char exp[], const int len)
 		}
 	}
 
-	// return the evaluated expression.
+	// return the evaluated postfix expression.
 	return st.pop();
 }
 
@@ -144,3 +151,99 @@ int solve(int x, int y, char opr)
 
 	return z;
 }
+
+// converts from infix to postfix.
+void InToPost(char* inExp, char* post)
+{
+	Stack<char>operators(50);
+	short opWeight(char op1, char op2); // check the operators' weight.
+
+	int len = strlen(inExp);
+	int j = 0;
+
+	for(int i = 0; i < len; i++)
+	{
+		if(isDigit(inExp[i]))
+		   post[j++] = inExp[i];
+		else if(isOperator(inExp[i]))
+		{
+			// push the 1st operator.
+			if(operators.isEmpty())
+				operators.push(inExp[i]);
+			else
+			{
+				// check the precedence.
+				if(opWeight(inExp[i], operators.peek()) > 0)
+					operators.push(inExp[i]);
+				else
+				{
+					while(opWeight(inExp[i], operators.peek()) <= 0)
+					{
+						post[j++] = operators.pop();
+						post[j++] = ' '; 
+						if(operators.isEmpty()) break;
+					}
+					
+					operators.push(inExp[i]);
+				}
+			}
+		}
+		else if(inExp[i] == ' ')
+		   post[j++] = inExp[i];
+		else // if there is a non-valid char.
+		{
+			if(!isDigit(inExp[i]) && !isOperator(inExp[i]) && inExp[i] != ' ')
+			{
+				cout << "Neither operand nor operator.\n";
+				exit(1);
+			}
+		}
+	}
+
+	// the rest of operators.
+	while(operators.isEmpty() == 0)
+	{
+	  post[j++] = ' '; 
+	  post[j++] = operators.pop();
+	}
+
+	// terminate the string.
+	post[j] = '\0';
+}
+
+short opWeight(char op1, char op2)
+{
+	// same precedence.
+	if(op1 == '+' && op2 == '-' || op1 == '-' && op2 == '+' ||
+	   op1 == '+' && op2 == '+' || op1 == '-' && op2 == '-' ||
+	   
+	   op1 == '*' && op2 == '/' || op1 == '/' && op2 == '*' ||
+	   op1 == '/' && op2 == '/' || op1 == '*' && op2 == '*' ||
+	   
+	   op1 == '%' && op2 == '/' || op1 == '%' && op2 == '*' ||
+	   op1 == '/' && op2 == '%' || op1 == '*' && op2 == '%' ||
+	   
+	   op1 == '%' && op2 == '%')
+		
+		return 0;
+	
+	// lower precedence.
+	else if(op1 == '+' && op2 == '*' || op1 == '-' && op2 == '/' ||
+			op1 == '+' && op2 == '%' || op1 == '-' && op2 == '%' ||
+			op1 == '+' && op2 == '/' || op1 == '-' && op2 == '*')	
+		
+		return -1;
+	
+	// higher precedence.
+	else if(op1 == '*' && op2 == '-' || op1 == '*' && op2 == '+' ||
+			op1 == '/' && op2 == '-' || op1 == '/' && op2 == '+' ||
+			op1 == '%' && op2 == '-' || op1 == '%' && op2 == '+')
+		
+		return 1;
+	
+	// worthless statement but to avoid compiler's warnings.
+	return 2;
+}
+
+
+
