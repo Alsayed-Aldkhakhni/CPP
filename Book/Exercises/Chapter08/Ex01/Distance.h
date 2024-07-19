@@ -1,5 +1,5 @@
 //============================================================================
-// Name        : source.c
+// Name        : Distance.h
 // Date        : July 12, 2024
 // Author      : Alsayed-Aldkhakhni
 // Version     : V1.0
@@ -52,12 +52,13 @@ void Distance::validate(int ft, float inch)
 	// sample: 25
 	if(inch >= 12)
 	{
-		// 25/2 = 2  <-- int accept no fractions.
+		// 25/12 = 2  <-- int accepts no fractions.
 		feet += inch / 12;
 
 		// 25 - [(25/12) * 12] 
 		// 25 - [24] = 1.
 		inches = inch - ( int(inch / 12) * 12);
+		// inches = inch % 12; // also works.
 	}
 }
 
