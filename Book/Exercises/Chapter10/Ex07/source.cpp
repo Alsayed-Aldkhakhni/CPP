@@ -10,7 +10,6 @@
  * */
 
 #include <iostream> // for the declaration of cin, cout objects.
-#include <cstring>  // for the library function strlen.
 using namespace std;// for their definition.
 //#################################################################//
 class Person
@@ -57,6 +56,7 @@ int main()
 	int numOfPers = 0;
 	char ans;
 
+	// read the data from the user.
 	for(int i = 0;; i++)
 	{
 		pers[i] = new Person;
@@ -69,9 +69,15 @@ int main()
 		if(ans != 'y') break;
 	}
 
+	// sort then display.
 	sort(pers, numOfPers);
 	display(pers, numOfPers);
+	
+	// release the resources. [memory].
+	for(int i = 0; i < numOfPers; i++)
+		delete pers[i];
 
+	// indicates a successful execution.
 	return 0;
 }
 
