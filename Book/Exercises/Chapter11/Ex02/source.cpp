@@ -14,7 +14,8 @@ int main()
 {
 	// instantiate 2 objects.
 	Distance dist1, dist2;
-	
+	Distance dist3;
+
 	// carry out the operations.
 	for(int i = 0; i < 5; i++)
 	{
@@ -30,6 +31,9 @@ int main()
 
 		cout << "diff:  "; (dist1-dist2).getDist();
 		cout << "mul:   "; (dist1*dist2).getDist();
+		
+		dist3 = 3.25 * dist2;
+		cout << "mul:   "; dist3.getDist();
 
 		cout << "\n";
 	}
