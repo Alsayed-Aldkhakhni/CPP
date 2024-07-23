@@ -18,6 +18,8 @@ private:
 	
 	void validate(int, float );
 public:
+	Distance() : feet(0), inches(0.0) {}
+
 	Distance(float fVal)
 	{
 		if(fVal <= 0)
@@ -33,13 +35,13 @@ public:
 		validate(feet, inches);
 	}
 
-	Distance(int ft=0, float inch= 0.0) { validate(ft, inch); }
+	Distance(int ft, float inch) { validate(ft, inch); }
 
 	void setDist();
 	void getDist() const;
 
 	Distance operator-(Distance& dist);
-	friend	Distance operator*(Distance& dist1, Distance& dist2);
+	friend	Distance operator*(Distance dist1, Distance dist2);
 };
 //#############################################################################//
 
@@ -98,7 +100,7 @@ Distance Distance::operator-(Distance& dist)
 }
 
 // friend function, not belong to the class.
-Distance operator*(Distance& dist1, Distance& dist2)
+Distance operator*(Distance dist1, Distance dist2)
 {
 	float fDist1 = dist1.feet + dist1.inches / 12.0;
 	float fDist2 = dist2.feet + dist2.inches / 12.0;
