@@ -160,5 +160,9 @@ int main()
 			"===========\n";
 	}
 
+	// release the memory.
+	for(int i = 0; i < numOfPubs; i++)
+		delete pubs[i];
+
 	return 0;
 }
