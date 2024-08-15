@@ -1,20 +1,19 @@
 //============================================================================
 // Name        : Stack.cpp
 // Date        : June 16, 2024
-// Author      : Alsayed-Aldkhakhni
-// Version     : V1.1
-// Copyright   : You can use it as you need but don't cheat yourself.
-// Description : Simulate stack data structure based on listay.
+// Author      : Alsayed_Ali_Aldkhakhni
+// Copyright   : Nothing to be mentioned yet. 
+// Description : Construct stack data structure based on array.
 //============================================================================
 
-#include <iostream>  // the declaration of 'c in' and 'c out'.
+#include <iostream>  // the declaration of 'cin' and 'cout'.
 using namespace std; // their definition.
 
 // template class that handles any data type.
 template <class T>
 class Stack // class specifier.
 {
-private: // data members.
+private:    // data members.
 	int TOP;
 	int size; // the capacity of the stack.
 	T *list;  // stack body.
@@ -55,11 +54,10 @@ public: // function members.
 		if(isEmpty())
 			throw Exception("Underflow.");
 
-		cout << list[TOP] << " is poped.\n";
 		return list[TOP--];
 	}
 
-	// check whether the stack has data or not.
+	// check whether the stack has data.
 	bool isEmpty() { return TOP == -1;}
 
 	// return the element on the top.
@@ -84,7 +82,7 @@ public: // function members.
 	}
 
 	// release the memory dedicated to the stack.
-	~Stack() { delete[] list; cout << "memory space is released.\n"; }
+	~Stack() { delete[] list; }
 };
 
 int main()
@@ -95,10 +93,10 @@ int main()
 		cout << "Enter stack size: ";
 		cin >> size;
 
-		// instantiate an object, charStack, from that class to handle characters.
+		// instantiate an object that handles characters.
 		Stack<char>charStack(size);
 
-		// pushing, adding some items.
+		// pushing some items.
 		charStack.push('A');
 		charStack.push('B');
 		charStack.push('C');
@@ -114,7 +112,7 @@ int main()
 		// display them.
 		charStack.display();
 
-		// popping, removing some of them.
+		// popping some of them.
 		charStack.pop(); // J
 		charStack.pop(); // I
 		charStack.pop(); // H
@@ -126,9 +124,19 @@ int main()
 		// display the rest.
 		charStack.display();
 	}
-	catch(Stack<char>::Exception)
+	catch(const Stack<char>::Exception&)
 	{}
 
-	// indicates a successful execution.
+	// indicates a successful execution
+	// that function main has been popped off 
+	// the the system stack.
 	return 0;
 }
+
+
+
+
+
+
+
+
