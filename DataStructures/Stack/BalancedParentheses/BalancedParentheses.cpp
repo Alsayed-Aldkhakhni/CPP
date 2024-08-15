@@ -1,24 +1,23 @@
 //============================================================================
 // Name        : BalancedParentheses.cpp
 // Date        : June 17, 2024
-// Author      : Alsayed-Aldkhakhni
-// Version     : V1.0
+// Author      : Alsayed_Ali_Aldkhakhni
 // Copyright   : Nothing to be mentioned.
 // Description : Check whether an entered expression is balanced.
 //============================================================================
 
-// preprocessor directive, instructs the preprocessor, a part of the compiler,
-// to pre-fetch the content of this header file, io-stream,
-// to the current source file since we need it for using 'c in' and 'c out' objects.
-#include <iostream>
-using namespace std; // contains the definition of how those object operate.
+// preprocessor directive, instructs the preprocessor
+// to pre-fetch the content of this header file, iostream,
+// to the current source file since we need it for using 'cin' and 'cout' objects.
+#include <iostream> // contians the declaration of objects cin and cout.
+using namespace std;// contains the definition of how those object operate.
 
 //**************************************************************************
 // template class that handles any data type.
 template <class T>
 class Stack // class specifier.
 {
-private: // data members.
+private:    // data members.
 	int TOP;
 	int size; // the capacity of the stack.
 	T *list;  // stack body.
@@ -85,8 +84,9 @@ int main()
 	string exp;
 
 	// read it.
-	cout << "Enter an expression: "; cin >> exp;
-
+	cout << "Enter an expression: ";
+	getline(cin, exp); // read embbeded blanks.
+	
 	// call the method 'isBalanced()' to determine whether it is balanced.
 	cout << (isBalanced(exp) ? "It's balanced." : "It's not balanced.") << "\n";
 
@@ -100,7 +100,7 @@ bool isBalanced(string exp)
 	// stack to hold the parentheses.
 	Stack<char> stack1(exp.length() / 2);
 
-	// private function to check parentheses' compatibility.
+	// check parentheses' compatibility.
 	bool arePaired(char open, char close);
 
 	// traverse on the whole expression searching for the parentheses.
@@ -120,7 +120,7 @@ bool isBalanced(string exp)
 		}
 	}
 
-	// the answer of the question.
+	// the answer of the question isBalanced?.
 	return stack1.isEmpty();
 }
 
@@ -129,3 +129,10 @@ bool arePaired(char open, char close)
 {
 	return (open == '[' && close == ']') || (open == '{' && close == '}') || (open == '(' && close == ')');
 }
+
+
+
+
+
+
+
