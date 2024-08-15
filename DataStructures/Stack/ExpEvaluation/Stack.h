@@ -1,8 +1,7 @@
 //============================================================================
 // Name        : Stack.h 
 // Date        : June 17, 2024
-// Author      : Alsayed-Aldkhakhni
-// Version     : V1.0
+// Author      : Alsayed_Ali_Aldkhakhni
 // Copyright   : Nothing to be mentioned.
 // Description : Stack data structure implementation.
 //============================================================================
@@ -70,3 +69,9 @@ public: // function members.
 	~Stack() { delete[] list;}
 };
 //#########################################################################################//
+
+
+
+
+
+
