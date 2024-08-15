@@ -1,21 +1,20 @@
 //============================================================================
 // Name        : LinkedStack.cpp
 // Date        : June 16, 2024
-// Author      : Alsayed-Aldkhakhni
-// Version     : V1.1
+// Author      : Alsayed_Ali_Aldkhakhni
 // Copyright   : Nothing to be mentioned.
-// Description : Simulate stack data structure based on linked list.
+// Description : Construct stack data structure based on linked list.
 //============================================================================
 
-// preprocessor directive, instructs the preprocessor, a part of the compiler,
+// preprocessor directive, instructs the preprocessor
 //  to pre-fetch the content of this header file, iostream,
 //  to the current source file since we need it for using 'cin' and 'cout' objects.
-#include <iostream>
-using namespace std; // contains the definition of how those object operate.
+#include <iostream> // contains the declaration of those objects, cin and cout.
+using namespace std;// contains the definition of how those objects operate.
 
 // template class to handle any primitive data type.
 template <class T>
-class LinkedStack
+class LinkedStack // class definition.
 {
 	class Node
 	{
@@ -29,7 +28,6 @@ private:
 	Node* TOP; // list's head.
 
 public:
-
 	// inner class exception handler.
 	class Exception
 	{
@@ -45,7 +43,7 @@ public:
 	{
 		Node* newNode = new Node(val);
 
-		if(TOP == NULL) // also as [TOP == 0]
+		if(TOP == NULL) // or if(TOP == 0)
 			TOP = newNode;
 		else
 		{
@@ -59,8 +57,6 @@ public:
 	{
 		if(isEmpty())
 			throw Exception("Underflow.");
-
-		cout << peek() << " is popped.\n";
 
 		Node* temp = TOP;
 		TOP = TOP->next;
@@ -101,12 +97,8 @@ public:
 		cout << "\n---------\n\n";
 	}
 
-	// delete the whole stack after we finished.
-	~LinkedStack()
-	{
-		while(! isEmpty()) pop();
-		cout << "\n'released memory space.'\n";
-	}
+	// released memory space that was dedicated to the list.
+	~LinkedStack() { while(! isEmpty()) pop(); }
 };
 
 int main()
@@ -122,15 +114,32 @@ int main()
 		charStack.push('C');
 		charStack.push('D');
 		charStack.push('E');
-
-		// display them.
+		
+		// display the data just pushed.
 		charStack.display();
+		
+		charStack.pop(); // E
+		charStack.pop(); // D
+		charStack.pop(); // C
+		charStack.pop(); // B
+		charStack.pop(); // A
+		charStack.pop(); // will thorw an exception.
 	}
-	catch(LinkedStack<char>::Exception)
+	catch(const LinkedStack<char>::Exception&)
 	{}
 
 	// indicates successful execution.
+	// that means that the system will pop
+	// the function main off the system stack.
 	return 0;
 
 }  // once we get here the destructor will destroy the whole stack automatically from memory.
+
+
+
+
+
+
+
+
 
