@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : source.cpp
 // Date        : June 17, 2024
-// Author      : Alsayed-Aldkhakhni
+// Author      : Alsayed_Ali_Aldkhakhni
 // Copyright   : Nothing to be mentioned.
 // Description : Evaluate an infix expression.
 //============================================================================
@@ -9,11 +9,10 @@
 // preprocessor directive, instructs the preprocessor to pre-fetch the
 // content of this header file, iostream, to the current source file
 // since we need it for using 'cin' and 'cout' objects.
-
 #include <iostream> // for 'cin' and 'cout'.
 #include <cstring>  // for 'strlen()', atol().
-#include "Stack.h"  // reference of Stack data structure.
-using namespace std;// contains the definition of cin, cout.
+#include "Stack.h"  // reference of our own stack data structure.
+using namespace std;// for the definition of cin, cout.
 
 // functions' prototype.
 int evaluate(char exp[], const int len);
@@ -25,22 +24,28 @@ int main()
 	char infix[100], postfix[100];
 	
 	// prompt the user to enter an infixression.
-	cout << "\n    Enter an infix expression[e.g. 6 * 14 + 5]\n"
-			"    $leave space among the operators and operands.$\n"
-			"    $no negative numbers$: ";
+	cout << "\nEnter an infix expression[e.g. 6 * 14 + 5]\n"
+		" ---Leave space among the operators and operands.\n"
+		" ---No parantheses.\n"
+		" ---No negative numbers: ";
 
 	// read it.
 	cin.getline(infix, 100);
 
-	InToPost(infix, postfix);
+	try{
+
+		InToPost(infix, postfix);
 	
-	cout << "================================\n";
-	cout << "    Infix:      " << infix << "\n"
-		 << "    Postfix:    " << postfix << "\n";
+		cout << "================================\n";
+		cout << "Infix:      " << infix << "\n"
+		     << "Postfix:    " << postfix << "\n";
 	
-	// execute.
-	cout << "    Expression: " << infix << " = " << evaluate(postfix, strlen(postfix));
-	cout << "\n================================\n";
+		// execute.
+		cout << "Expression: " << infix << " = " << evaluate(postfix, strlen(postfix));
+		cout << "\n================================\n";
+
+	}catch(...)
+	{}
 
 	// indicate a successful execution.
 	return 0;
@@ -50,7 +55,7 @@ int main()
 int evaluate(char exp[], const int len)
 {
 	// hold the data.
-	Stack<int> st(50);
+	Stack<int> iStack(50);
 
 	// delimit the scope of these functions.
 	bool isOperator(char opr);// check if the current char is an operator.
@@ -72,7 +77,7 @@ int evaluate(char exp[], const int len)
 
 			// evaluate string to numeric.
 			rslt = atol(buff);
-			st.push(rslt);
+			iStack.push(rslt);
 			
 			// reset the buffer array.
 			k = 0;
@@ -81,11 +86,11 @@ int evaluate(char exp[], const int len)
 		// carry out the operation.
 		else if(isOperator(exp[i]))
 		{
-			int y =  st.pop();
-			int x =  st.pop();
+			int y =  iStack.pop();
+			int x =  iStack.pop();
 
 			int z = solve(x, y, exp[i]);
-			st.push(z);
+			iStack.push(z);
 		}
 		else // if there is a non-valid char.
 		{
@@ -98,7 +103,7 @@ int evaluate(char exp[], const int len)
 	}
 
 	// return the evaluated postfix expression.
-	return st.pop();
+	return iStack.pop();
 }
 
 // is the current character digit ?
@@ -142,7 +147,7 @@ int solve(int x, int y, char opr)
 	case '%':
 		if(y == 0)
 		{
-			cout << "There is not reminder on zero.\n";
+			cout << "There is no reminder on zero.\n";
 			exit(1);
 		}
 
