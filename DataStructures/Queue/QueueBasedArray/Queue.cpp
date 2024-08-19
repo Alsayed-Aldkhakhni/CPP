@@ -1,8 +1,7 @@
 //============================================================================
 // Name        : Queue.cpp
 // Date        : June 18, 2024
-// Author      : Alsayed-Aldkhakhni
-// Version     : V1.1
+// Author      : Alsayed_Ali_Aldkhakhni
 // Copyright   : Nothing to be mentioned.
 // Description : Simulate queue data structure based on dynamic array.
 //============================================================================
@@ -17,7 +16,7 @@ using namespace std;// contains the definition of how those object operate.
 template <class T>
 class Queue // class specifier.
 {
-private: // data members.
+private:    // data members.
 	int front;
 	int rear;
 	T* arr;
@@ -84,9 +83,6 @@ public: // member functions.
 		// check first.
 		if(isEmpty()) { throw Exception("Queue's empty."); }
 
-		// print the main data of the queue.
-		peek();
-
 		int i = front;
 		int rounds = length;
 
@@ -113,17 +109,16 @@ public: // member functions.
 	bool isFull() {	return length == size;}
 	bool isEmpty(){ return front == -1; }
 
-	// print main data.
-	void peek()
-	{
-		cout << "Front: " << getFront() << " at index " << frontAt() << "\n";
-		cout << "Rear:  " << getRear()  << " at index " << rearAt()<< '\n';
-		cout << "# of items: " << getLength() << "\n\n";
-	}
+	// return a copy of the front.
+	T peek() { return getFront(); }
 
 	// release the memory dedicated for this class.
 	~Queue() { delete[] arr; }
 };
+
+
+
+
 int main()
 {
 	try{
@@ -152,7 +147,7 @@ int main()
 		// 16    12 13 14 15   <----- data.
 		// 0     1  2  3  4    <---- indexes.
 		queue1.enQueue(16);
-		queue1.enQueue(17); // overflow.
+		//queue1.enQueue(17); // overflow.
 
 		// display the queue's content.
 		queue1.display(); // 12 13 14 15 16
@@ -162,10 +157,23 @@ int main()
 
 		queue1.display(); // 14 15 16 17
 	}
-	catch(Queue<int>::Exception&)
+	catch(const Queue<int>::Exception&)
 	{}
 
 
 	// indicates a successful execution.
 	return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
