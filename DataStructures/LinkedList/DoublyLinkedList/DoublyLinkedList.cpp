@@ -1,20 +1,19 @@
 //============================================================================
 // Name        : DoublyLinkedList.cpp
 // Date        : June 18, 2024
-// Author      : Alsayed-Aldkhakhni
-// Version     : V1.1
+// Author      : Alsayed_Ali_Aldkhakhni
 // Copyright   : Nothing to be mentioned.
 // Description : Doubly linked list implementation.
 //============================================================================
 
-#include <iostream> // the declaration of objects 'c in' and 'c out'.
+#include <iostream> // the declaration of objects 'cin' and 'cout'.
 using namespace std;// their definition.
 
 // generic class that handles any data type from the primitives.
 template <class T>
 class DoublyLinkedList // class specifier.
 {
-	class Node// class tag.
+	class Node     // class tag.
 	{
 	public:
 		T data;
@@ -29,7 +28,7 @@ private: // data members.
 	int nodesCount;
 
 	// this method releases the memory occupied by list's nodes.
-	//  it's private since the user have no permission to call it, the destructor does.
+	//  it's private since the user has no permissions to call it, the destructor does.
 	void releaseMemory()
 	{
 		Node* temp = Head;
@@ -233,6 +232,8 @@ public:
 	~DoublyLinkedList() { releaseMemory(); }
 };
 
+
+
 int main()
 {
 	try{
@@ -275,8 +276,16 @@ int main()
 		intDoubList.displayFromHead();
 
 	}
-	catch(DoublyLinkedList<int>::Exception&)
+	catch(const DoublyLinkedList<int>::Exception&)
 	{}
+
 	// indicates a successful execution.
 	return 0;
 }
+
+
+
+
+
+
+
