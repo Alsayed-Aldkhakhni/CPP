@@ -2,29 +2,27 @@
 // Name        : LinkedQueue.cpp
 // Date        : June 16, 2024
 // Author      : Alsayed-Aldkhakhni
-// Version     : V1.0
 // Copyright   : Nothing to be mentioned.
 // Description : Simulate Queue data structure using linked list.
 //============================================================================
 
 // preprocessor directive, instructs the preprocessor, a part of the compiler,
-// to pre-fetch the content of this header file, io-stream,
-// to the current source file since we need it for using 'c in' and 'c out' objects.
-#include <iostream>
+// to pre-fetch the content of this header file, iostream,
+// to the current source file since we need it.
+#include <iostream>  // for using 'cin' and 'cout' objects.
 using namespace std; // contains the definition of how those object operate.
 
 // template class that handles primitive data type.
 template <class T>
 class LinkedQueue// class specifier.
 {
-	// #HINT: i used class instead of struct,
-	//        just to use the ctor to avoid much typing.
+	// #HINT: I used  a class instead of struct,
+	//        to use the ctor to avoid much typing.
 	class Node
 	{
 	public:
 		T data;
 		Node* next;
-
 		Node(T dt, Node* nxt = NULL) : data(dt), next(nxt) {}
 	};
 
@@ -95,7 +93,7 @@ public:
 				 << "    |\n"
 				 << "    v\n";
 
-			cout << "-------------------------------"
+			cout << "-------------------------------"\
 					"----------------------------------------\n";
 
 			while(temp != NULL)
@@ -104,7 +102,7 @@ public:
 				temp = temp->next;
 			}
 
-			cout << "|\n-------------------------------"
+			cout << "|\n-------------------------------"\
 					"----------------------------------------\n\n\n";
 		}
 		else
@@ -112,8 +110,10 @@ public:
 	}
 
 	// release the memory occupied for this queue.
-	~LinkedQueue() { while(!isEmpty()) deQueue(); cout << "\n---> memory is released.\n"; }
+	~LinkedQueue() { while(!isEmpty()) deQueue(); } 
 };
+
+
 
 int main()
 {
@@ -153,9 +153,15 @@ int main()
 		// display them.
 		charQueue1.display();
 
-	}catch(LinkedQueue<char>::Exception&)
+	}catch(const LinkedQueue<char>::Exception&)
 	{}
 
 	// indicates a successful execution.
 	return 0;
 }
+
+
+
+
+
+
