@@ -1,8 +1,7 @@
 //============================================================================
 // Name        : SinglyLinkedList.cpp
 // Date        : June 18, 2024
-// Author      : Alsayed-Aldkhakhni
-// Version     : V1.0
+// Author      : Alsayed_Ali_Aldkhakhni
 // Copyright   : Nothing to be mentioned.
 // Description : Singly linked list implementation.
 //============================================================================
@@ -26,8 +25,8 @@ class LinkedList // class specifier.
 	};
 
 private:
-	Node* Head; // to point to the list's head;
-	Node* Tail; // to append a node at O(1) instead of looping up to the end.
+	Node* Head;     // to point to the list's head;
+	Node* Tail;     // to append a node at O(1) instead of looping up to the end.
 	int nodesCount; // trace how many nodes does the list have.
 
 	// * remove the list totally from the memory.
@@ -93,7 +92,7 @@ public:
 	}
 
 	// insert before another specific node.
-	void insertBefore(T beforeWhat, T insertWhat) // 30,25
+	void insertBefore(T beforeWhat, T insertWhat)
 	{
 		// if we have no data yet.
 		if(isEmpty())
@@ -108,7 +107,7 @@ public:
 		else
 		{
 			// create the new node to store the data.
-			Node* newNode = new Node(insertWhat); // 25
+			Node* newNode = new Node(insertWhat);
 
 			// to search for the target.
 			Node* temp = Head;
@@ -263,11 +262,19 @@ int main()
 
 		// reverse the list's order and display the new order.
 		intList.reverseOrder();
-		intList.display();    // 50 25 10
+		intList.display(); // 50 25 10
 	}
-	catch (LinkedList<int>::Exception&)
+	catch (const LinkedList<int>::Exception&)
 	{}
 
 	// indicates a successful execution.
 	return 0;
 }
+
+
+
+
+
+
+
+
