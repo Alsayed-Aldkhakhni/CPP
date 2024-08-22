@@ -145,7 +145,7 @@ int main()
 		// |     |
 		// V     V
 		// 16    12 13 14 15   <----- data.
-		// 0     1  2  3  4    <---- indexes.
+		// 0     1  2  3  4    <----- indexes.
 		queue1.enQueue(16);
 		//queue1.enQueue(17); // overflow.
 
@@ -155,7 +155,7 @@ int main()
 		queue1.deQueue(); // 12 is gone.
 		queue1.deQueue(); // 13 is gone.
 
-		queue1.display(); // 14 15 16 17
+		queue1.display(); // 14 15 16 
 	}
 	catch(const Queue<int>::Exception&)
 	{}
@@ -164,15 +164,6 @@ int main()
 	// indicates a successful execution.
 	return 0;
 }
-
-
-
-
-
-
-
-
-
 
 
 
