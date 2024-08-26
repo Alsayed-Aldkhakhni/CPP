@@ -4,50 +4,24 @@
 // Author      : Alsayed-Aldkhakhni
 // Copyright   : Nothing to be mentioned.
 // Description : Selection sort technique implementation.
-// Complexity  : Time: O(n^2), Space: O(1) since it is an in-place technique.
+// Complexity  : Time: O(n^2); Space: O(1) since it is an in-place technique.
 //============================================================================
 
 #include <iostream> // for cin, cout objects declaration.
 using namespace std;// for their definition.
 
-// functions' prototype.
-template<class Type>
-void selectionSort(Type*, int);
-
-template<class Type>
-void display(Type*, int);
-
-template<class Type>
-void Swap(Type&, Type&);
-
-int main()
+// swap x and y.
+template<class T>
+void Swap(T& x, T& y)
 {
-	int intArr[] = {13, -10, 12, -100, 150, 110, 55, -210, 7, 8};
-	char charArr[] = {'x', 'A', 'C', 'm', 'R', 'n', 'j', 'W', 'u', 'P'};
-
-	// dynamic calculation to the size of the arrays.
-	int intSize = sizeof(intArr) / sizeof(intArr[1]);
-	int charSize = sizeof(charArr)/ sizeof(charArr[1]);
-
-	// array of integers.
-	cout << "Before:  "; display(intArr, intSize);
-	selectionSort(intArr, intSize);
-	cout << "\nAfter: "; display(intArr, intSize);
-
-	cout << "\n\n******************************\n\n";
-
-	// array of characters.
-	cout << "Before: "; display(charArr, charSize);
-	selectionSort(charArr, charSize);
-	cout << "\nAfter: "; display(charArr, charSize);
-
-	// indicates a successful execution.
-	return 0;
+	T z = x;
+	x = y;
+	y = z;
 }
 
-// functions' definition.
-template<class Type>
-void selectionSort(Type* arr, int size)
+// sort 'arr' in selection sort technique.
+template<class T>
+void sort(T* arr, int size)
 {
 	int temp;
 	int min;
@@ -65,20 +39,44 @@ void selectionSort(Type* arr, int size)
 	}
 }
 
-template<class Type>
-void Swap(Type& x, Type& y)
+// display arr.
+template<class T>
+void display(T* arr, int size)
 {
-	Type z = x;
-	x = y;
-	y = z;
-}
-
-template<class Type>
-void display(Type* arr, int size)
-{
-	cout << "\n============================================================================\n|";
+	cout << "\n|";
 	for(int j = 0; j < size; j++)
 		cout << "  " << arr[j] << "  |";
-	cout << "\n============================================================================\n";
+	cout << "\n";
 
 }
+
+int main()
+{
+	int intArr[] =   {13, -10, 12, -100, 150};
+	char charArr[] = {'x', 'A', 'C', 'm', 'R'};
+
+	// dynamic calculation to the size of the arrays.
+	int intSize = sizeof(intArr) / sizeof(intArr[1]);
+	int charSize = sizeof(charArr)/ sizeof(charArr[1]);
+
+	// array of integers.
+	cout << "Before:  "; display(intArr, intSize);
+	sort(intArr, intSize);
+	cout << "\nAfter: "; display(intArr, intSize);
+
+	cout << "******************************\n";
+
+	// array of characters.
+	cout << "Before: "; display(charArr, charSize);
+	sort(charArr, charSize);
+	cout << "\nAfter: "; display(charArr, charSize);
+
+	// indicates a successful execution.
+	return 0;
+}
+
+
+
+
+
+
