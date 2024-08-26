@@ -10,44 +10,18 @@
 #include <iostream> // for cin, cout objects declaration.
 using namespace std;// for their definition.
 
-// functions' prototype.
+// swap the values of x, y.
 template<class Type>
-void bubbleSort(Type*, int);
-
-template<class Type>
-void display(Type*, int);
-
-template<class Type>
-void Swap(Type&, Type&);
-
-int main()
+void Swap(Type& x, Type& y)
 {
-	int intArr[] = {13, -10, 12, -10, 15, 11, 55, -21, 7, 8};
-	char charArr[] = {'x', 'A', 'C', 'm', 'R', 'n', 'j', 'W', 'u', 'P'};
-
-	// dynamic calculation to the size of the arrays.
-	int intSize = sizeof(intArr) / sizeof(intArr[1]);
-	int charSize = sizeof(charArr)/ sizeof(charArr[1]);
-
-	// array of integers.
-	cout << "Before:  "; display(intArr, intSize);
-	bubbleSort(intArr, intSize);
-	cout << "\nAfter: "; display(intArr, intSize);
-
-	cout << "\n\n******************************\n\n";
-
-	// array of characters.
-	cout << "Before: "; display(charArr, charSize);
-	bubbleSort(charArr, charSize);
-	cout << "\nAfter: "; display(charArr, charSize);
-
-	// indicates a successful execution.
-	return 0;
+	Type z = x;
+	x = y;
+	y = z;
 }
 
-// functions' definition.
+// bubble sort function.
 template<class Type>
-void bubbleSort(Type arr[], int len)
+void sort(Type arr[], int len)
 {
 	// step on each index in the array.
 	for(int i = 0; i < len; i++)
@@ -62,20 +36,44 @@ void bubbleSort(Type arr[], int len)
 	}
 }
 
-template<class Type>
-void Swap(Type& x, Type& y)
-{
-	Type z = x;
-	x = y;
-	y = z;
-}
-
+// display the arr.
 template<class Type>
 void display(Type* arr, int size)
 {
-	cout << "\n========================================================================\n|";
+	cout << "\n|";
 	for(int j = 0; j < size; j++)
 		cout << "  " << arr[j] << "  |";
-	cout << "\n========================================================================\n";
+	cout << "\n";
 
 }
+
+
+int main()
+{
+	int intArr[] =   {13, -10, 12, -10, 15};
+	char charArr[] = {'x', 'A', 'C', 'm', 'P'};
+
+	// dynamic calculation to the size of the arrays.
+	int intSize = sizeof(intArr) / sizeof(intArr[1]);
+	int charSize = sizeof(charArr)/ sizeof(charArr[1]);
+
+	// array of integers.
+	cout << "Before:  "; display(intArr, intSize);
+	sort(intArr, intSize);
+	cout << "\nAfter: "; display(intArr, intSize);
+
+	cout << "******************************\n";
+
+	// array of characters.
+	cout << "Before: "; display(charArr, charSize);
+	sort(charArr, charSize);
+	cout << "\nAfter: "; display(charArr, charSize);
+
+	// indicates a successful execution.
+	return 0;
+}
+
+
+
+
+
