@@ -1,6 +1,10 @@
 # Repo's content...
-## 1. Robert lafore's book, "Fish book 4th-ed", exercises.
-## 2. Data Structures.
-## 3. 
-## 4. 
-## 5. 
+## 1. This repo contains some codes in C++ that i wrote as an exercise 
+##    and those codes are from the Robort lafore's book, the one known
+##    as "Fish book" the 4th-edition.
+## ------------------------------------------------------------------- 
+## 2. Also contains some basices entities of data structures as linked 
+##    list, queue, stack and binary search tree.
+## ------------------------------------------------------------------- 
+
+
