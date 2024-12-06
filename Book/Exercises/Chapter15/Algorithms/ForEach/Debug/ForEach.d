@@ -1,0 +1,1 @@
+ForEach.o: ../ForEach.cpp

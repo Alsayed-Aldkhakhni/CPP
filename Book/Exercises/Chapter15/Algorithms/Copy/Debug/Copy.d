@@ -1,0 +1,1 @@
+Copy.o: ../Copy.cpp
