@@ -1,1 +1,0 @@
-List.o: ../List.cpp
